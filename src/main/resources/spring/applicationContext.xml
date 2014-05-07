@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <context:annotation-config />
+
+    <jdbc:embedded-database id="dataSource">
+       <jdbc:script location="classpath:/db/db.sql" />
+    </jdbc:embedded-database>
+
+
+    <bean class="ru.tusur.data.CityDAO" id="CityDAO">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <context:component-scan base-package="ru.tusur.service" />
+
+    <bean class="ru.tusur.data.PersonDAO" id="PersonDAO">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+
+    <bean class="ru.tusur.Launcher" />
+
+    <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@192.168.1.20:1521:xe"/>
+        <property name="username" value="servicedb"/>
+        <property name="password" value="oracle"/>
+    </bean>
+
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="ds"/>
+        <property name="persistenceUnitName" value="hsql"/>
+        <property name="jpaVendorAdapter" >
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="generateDdl" value="true" />
+            </bean>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="dataSource" ref="ds" />
+    </bean>
+
+    <jpa:repositories base-package="ru.tusur.data" entity-manager-factory-ref="entityManagerFactory" />
+
+    <context:component-scan base-package="ru.tusur.service"/>
+
+
+</beans>

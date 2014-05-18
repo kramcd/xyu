@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 public enum  Post {
 
-   sdfsdf ("Отпуск"), HOSPITAL("Больничный"),HOLIDAYSHORT("Отгул"), STUSYLEAVE("Учеба"), DEAD("Сдох к хуям");
+   sdRfsdf ("Отпуск"), HOSPITAL("Больничный"),HOLIDAYSHORT("Отгул"), STUSYLEAVE("Учеба"), DEAD("Сдох к хуям");
 
     private String text;
 

@@ -12,6 +12,7 @@
                 <td>
                     <a href="/city/edit/?code=<c:out value="${city.code}"/>">
                         <c:out value="${city.name}" />
+
                     </a>
                 </td>
                 </c:forEach>

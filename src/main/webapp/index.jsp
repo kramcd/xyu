@@ -9,14 +9,17 @@
 <html>
 <head>
     <title>main page</title>
+
 </head>
 <body>
 
-<a href="/city/">Cities list</a>
+<a href="/city/">Cities list</a><br>
 
-<a href="/person/">Persons list</a>
+<a href="/person/">Persons list</a><br>
 
-<a href="/country/">Countries list</a>
+<a href="/country/">Countries list</a><br>
+
+<a href="/employees/">Список сотрудников</a><br>
 
 </body>
 </html>

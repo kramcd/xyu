@@ -1,11 +1,6 @@
 package ru.tusur.domain;
 
-/**
- * xyu
- * ru.tusur
- * by Oleg Alekseev
- * 15.04.14.
- */
+
 public class Person {
 
     private String code;

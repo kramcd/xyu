@@ -28,8 +28,9 @@ public class EmployeesController {
     @RequestMapping(value = "/edit/")
     public ModelAndView employeesEdit(@RequestParam(value = "code", required = false) String code,
                                       @ModelAttribute("employeesview") EmployeesPresenter presenter){
-        if(!(code == null) && !(code.isEmpty())){
-            presenter.setEmployees(service.FindtByCode(code));
+        if(code == null || code.length()  <= 0){}
+        else{
+            presenter.setEmployees(service.FindById(Integer.parseInt(code)));
         }
         return new ModelAndView("editEmployees", "employeesview", presenter);
     }

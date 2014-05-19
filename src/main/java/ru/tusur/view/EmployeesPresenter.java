@@ -14,7 +14,7 @@ public class EmployeesPresenter {
     }
 
     public EmployeesPresenter(){
-
+        employees = new Employees();
     }
 
 

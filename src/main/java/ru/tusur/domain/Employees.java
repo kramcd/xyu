@@ -9,7 +9,7 @@ public class Employees {
 
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     @Column(length = 30, nullable = false)
     private String famaly;
@@ -43,9 +43,7 @@ public class Employees {
 
     private String code;
 
-    public String getCode() {
-        return code;
-    }
+    public String getCode() {        return code;    }
 
     public String getAddress() {
         return address;
@@ -55,15 +53,13 @@ public class Employees {
         this.address = address;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+    public void setCode(String code) {        this.code = code;    }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -22,8 +22,8 @@ public class EmployeesService {
         return repository.findAll();
     }
 
-    public Employees FindtByCode(String code){
-        return repository.findByCode(code);
+    public Employees FindById(Integer code){
+        return repository.findById(code);
     }
 
 

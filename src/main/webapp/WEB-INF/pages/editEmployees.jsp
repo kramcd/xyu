@@ -7,7 +7,8 @@
     <title></title>
 </head>
 <body>
-    <form:form commandName="employeesview" action="/employees/save">
+    <form:form commandName="employeesview" action="/employees/save/">
+        № <form:input path="employees.id" readonly="true"/><br>
         Имя <form:input path="employees.name"/><br>
         Отчество <form:input path="employees.middleName"/><br>
         Фамилия <form:input path="employees.famaly"/><br>
@@ -23,6 +24,7 @@
         Адрес электронной почты <form:input path="employees.email"/><br>
         Логин <form:input path="employees.login"/><br>
         Пароль <form:input  path="employees.password"/><br>
+        <input type="submit" value="Go!">
     </form:form>
 
 </body>

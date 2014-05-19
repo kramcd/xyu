@@ -28,7 +28,7 @@
 
     <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@192.168.1.20:1521:xe"/>
+        <property name="url" value="jdbc:oracle:thin:@192.168.1.15:1521:xe"/>
         <property name="username" value="servicedb"/>
         <property name="password" value="oracle"/>
     </bean>

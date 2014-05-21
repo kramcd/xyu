@@ -11,7 +11,7 @@
 
 
 <h1><decorator:title default="Undefined page"/></h1>
-
+ef
 <decorator:body />
 </body>
 </html>

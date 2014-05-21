@@ -13,7 +13,7 @@
 </head>
 <body>
 <table>
-    <tr>
+    <tr>v
         <c:forEach items="${persons}" var="person">
             <td><c:out value="${person.code}" /> </td>
 

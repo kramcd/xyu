@@ -11,22 +11,25 @@ public class Employees {
     @GeneratedValue
     private int id;
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 50, nullable = false)
     private String famaly;
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 50, nullable = false)
     private String middleName;
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 50, nullable = false)
     private  String name;
 
     @Enumerated(EnumType.STRING)
     private Post post;
 
+    @Column(nullable = false)
+    private int age;
+
     @Column(length = 11, nullable = false)
     private int numberTel;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 300, nullable = false)
     private String address;
 
     @Column(length = 10, nullable = false)
@@ -42,6 +45,14 @@ public class Employees {
     private String password;
 
     private String code;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public String getCode() {        return code;    }
 

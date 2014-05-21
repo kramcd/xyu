@@ -13,11 +13,13 @@
         Отчество <form:input path="employees.middleName"/><br>
         Фамилия <form:input path="employees.famaly"/><br>
         Должность <form:select path="employees.post">
+                    <jsp:useBean id="Post" scope="request" type="ru.tusur.domain.Post"/>
                     <c:forEach var="item" items="${Post}">
                         <form:option value="{item.text}"><spring:eval expression="item"/></form:option>
                     </c:forEach>
                         <form:options />
                   </form:select>
+        Возраст <form:input path="employees.age"/><br>
         Паспорт(серия, номер) <form:input path="employees.pasport"/><br>
         Номер телефона <form:input path="employees.numberTel"/><br>
         Домашний адрес <form:input path="employees.address"/><br>

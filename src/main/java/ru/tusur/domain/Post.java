@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 public enum  Post {
 
-    buhgaletr("Бухгалтер"),
+    accountaint("Бухгалтер"),
     manager("Менеджер"),
     erector("Монтажрик"),
     cleaning("Уборщик"),

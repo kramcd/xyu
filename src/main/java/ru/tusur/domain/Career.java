@@ -10,14 +10,19 @@ public class Career {
     @GeneratedValue
     private int id;
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "EmployeesId")
+    private Employees employees;
+
+    @Column(name = "career_date")
     private LocalDate date;
 
-    @Enumerated(EnumType.STRING)
-    private Post post;
+    @Column(name = "career_comment")
+    private String coment;
 
-    @Column(nullable = false)
-    private String comment;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "career_post")
+    private Post post;
 
     public int getId() {
         return id;
@@ -25,6 +30,14 @@ public class Career {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Employees getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Employees employees) {
+        this.employees = employees;
     }
 
     public LocalDate getDate() {
@@ -35,19 +48,19 @@ public class Career {
         this.date = date;
     }
 
+    public String getComent() {
+        return coment;
+    }
+
+    public void setComent(String coment) {
+        this.coment = coment;
+    }
+
     public Post getPost() {
         return post;
     }
 
     public void setPost(Post post) {
         this.post = post;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 }

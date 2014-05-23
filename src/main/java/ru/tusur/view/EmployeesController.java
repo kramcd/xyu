@@ -2,6 +2,8 @@ package ru.tusur.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,7 +38,14 @@ public class EmployeesController {
     }
 
     @RequestMapping(value = "/save/", method = RequestMethod.POST)
-    public ModelAndView employeesPost(@ModelAttribute EmployeesPresenter presenter){
+    public ModelAndView employeesPost(@ModelAttribute EmployeesPresenter presenter,
+                                      BindingResult errors
+                                      ){
+        if (errors.hasErrors()){
+            for (ObjectError error : errors.getAllErrors()){
+                System.out.println(error.getDefaultMessage());
+            }
+        }
         service.Save(presenter.getEmployees());
         return new ModelAndView("redirect:/employees/");
     }

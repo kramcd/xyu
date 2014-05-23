@@ -2,6 +2,7 @@ package ru.tusur.domain;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.sql.Date;
 
 @Entity
 public class Career {
@@ -11,11 +12,10 @@ public class Career {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "EmployeesId")
     private Employees employees;
 
     @Column(name = "career_date")
-    private LocalDate date;
+    private Date date;
 
     @Column(name = "career_comment")
     private String coment;
@@ -40,11 +40,11 @@ public class Career {
         this.employees = employees;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

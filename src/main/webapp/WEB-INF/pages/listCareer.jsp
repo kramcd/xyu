@@ -5,33 +5,39 @@
     <title> Профессиональный рост </title>
 </head>
 <body>
-    <table>
-        <tr>
-            <c:forEach items="${careers}" var="career">
-                <td>
+<table>
+    <tr>
+        <c:forEach items="${careers}" var="career">
+            <td>
                 <c:out value="${career.id}"/>
-                </td>
+            </td>
+
+            <td>
+                <a href="/career/edit/?code=<c:out value="${career.id}"/> ">
+                        <c:out value="${career.employees.name}"/>
+            </td>
 
             <td>
                 <a href="/career/edit/?code=<c:out value="${career.id}"/> ">
-                        <c:out value="${career.employees}"/>
+                        <c:out value="${career.employees.famaly}"/>
             </td>
             <td>
                 <a href="/career/edit/?code=<c:out value="${career.id}"/> ">
-                    <c:out value="${career.post}"/>
+                        <c:out value="${career.post}"/>
             </td>
             <td>
                 <a href="/career/edit/?code=<c:out value="${career.id}"/> ">
-                    <c:out value="${career.date}"/>
+                        <c:out value="${career.date}"/>
             </td>
             <td>
                 <a href="/career/edit/?code=<c:out value="${career.id}"/> ">
-                    <c:out value="${career.comment}"/>
+                        <c:out value="${career.coment}"/>
             </td>
 
-            </c:forEach>
-        </tr>
-            <a href="/career/edit/">Повысить или понизить сотрудника в должности</a>
-        </table>
+        </c:forEach>
+    </tr>
+    <a href="/career/<%=request.getParameter("employees_code")%>/edit/" >
+        Повысить или понизить сотрудника в должности</a>
+</table>
 </body>
 </html>

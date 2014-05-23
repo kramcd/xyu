@@ -25,6 +25,10 @@ public class CareerService {
         return repository.findById(code);
     }
 
+    public List<Career> FindByEmployees_id(Integer code){
+        return repository.findByEmployees_Id(code);
+    }
+
    /* public Career FindByPost(Post post){
         return repository.findByPost(post);
     }*/

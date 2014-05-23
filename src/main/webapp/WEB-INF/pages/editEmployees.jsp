@@ -13,8 +13,8 @@
         Отчество <form:input path="employees.middleName"/><br>
         Фамилия <form:input path="employees.famaly"/><br>
         Должность <form:select path="employees.post">
-                    <jsp:useBean id="Post" scope="request" type="ru.tusur.domain.Post"/>
-                    <c:forEach var="item" items="${Post}">
+
+                    <c:forEach var="item" items="${ru.tusur.domain.Post}">
                         <form:option value="{item.text}"><spring:eval expression="item"/></form:option>
                     </c:forEach>
                         <form:options />
@@ -27,6 +27,7 @@
         Логин <form:input path="employees.login"/><br>
         Пароль <form:input  path="employees.password"/><br>
         <input type="submit" value="Go!">
+        <a href="/career/?employees_code=<c:out value="${employeesview.employees.id}"/>">Посмотреть историю карьеры</a><br>
     </form:form>
 
 </body>

@@ -26,6 +26,10 @@ public class CareerService {
         return repository.findAll();
     }
 
+    public void Delete(Career career){
+        repository.delete(career);
+    }
+
     public Career FindById(Integer code){
         return repository.findById(code);
     }

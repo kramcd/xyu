@@ -40,6 +40,10 @@ public class StatementService {
         return repository.findAll();
     }
 
+    public void Delete(Statement statement){
+        repository.delete(statement);
+    }
+
     public List<Statement> FindByEmployees_id(Integer code){
         return repository.findByEmployees_Id(code);
     }

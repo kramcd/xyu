@@ -34,6 +34,16 @@ public class CareerController {
         return new ModelAndView("listCareer", "careers", careers);
     }
 
+    @RequestMapping(value = "/delete/")
+    public ModelAndView employeesDelete(@RequestParam(value = "code", required = false) String code,
+                                        @ModelAttribute("careerview") CareerPresenter presenter){
+        if(code == null || code.length()  <= 0){}
+        else{
+            service.Delete(service.FindById(Integer.parseInt(code)));
+        }
+        return new ModelAndView("redirect:/career/");
+    }
+
     @RequestMapping(value = "/{employeeId}/edit/")
     public ModelAndView careerEdit(@RequestParam(value = "code", required = false) String code,
                                    @PathVariable int employeeId,

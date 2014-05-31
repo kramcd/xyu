@@ -25,6 +25,10 @@ public class MissionService {
         return repository.findByEmployees_Id(code);
     }
 
+    public void Delete(Mission mission){
+        repository.delete(mission);
+    }
+
     public Mission FindById(Integer code){
         return repository.findOne(code);
     }

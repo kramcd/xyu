@@ -2,13 +2,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title> Профессиональный рост, сотрудник:<b> ${careerview.career.employees.name}
-        ${careerview.career.employees.famaly} ${careerview.career.employees.middleName} </b> </title>
+    <title>
+        <ol class="breadcrumb">
+            <li><a href="/employees/edit/?code=<%=request.getParameter("employees_code")%>">
+                Сотрудник: ${careerview.career.employees.name}
+                ${careerview.career.employees.famaly} ${careerview.career.employees.middleName}</a></li>
+            <li><a href="/career/<%=request.getParameter("employees_code")%>">Карьерный рост cписок записей</a></li>
+
+        </ol>
+    </title>
 
 
 </head>
 <body>
-<table>
+<table class="table">
 
     <tr>
         <td>Должность</td>
@@ -31,6 +38,13 @@
                 <a href="/career/edit/?code=<c:out value="${career.id}"/> ">
                         <c:out value="${career.coment}"/>
             </td>
+            <td>
+                <a class="text-success" href="/career/delete/?code=<c:out value="${employees.id}"/>">
+                    <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus"></span>  <b>Удалить  запись</b>
+                    </button>
+                </a>
+
+            </td>
 
         </c:forEach>
     </tr>
@@ -39,7 +53,7 @@
 
 <a class="text-success" href="/career/<%=request.getParameter("employees_code")%>/edit/">
     <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>
-        <b>Повысить или понизить сотрудника в должности</b>
+        <b>Добавить запись</b>
     </button></a>
 </body>
 </html>

@@ -1,15 +1,15 @@
 package ru.tusur.domain;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 public class Statement {
 
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     @Enumerated(EnumType.STRING)
     private applicationType applicationType;
@@ -22,10 +22,56 @@ public class Statement {
     private Employees employees;
 
     @Column(nullable = false)
-    private LocalDate startDate;
+    private Date startDate;
 
     @Column(nullable = false)
-    private LocalDate endDate;
+    private Date endDate;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public applicationType getApplicationType() {
+        return applicationType;
+    }
+
+    public void setApplicationType(applicationType applicationType) {
+        this.applicationType = applicationType;
+    }
+
+    public applicationStatus getApplicationStatus() {
+        return applicationStatus;
+    }
+
+    public void setApplicationStatus(applicationStatus applicationStatus) {
+        this.applicationStatus = applicationStatus;
+    }
+
+    public Employees getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Employees employees) {
+        this.employees = employees;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 }

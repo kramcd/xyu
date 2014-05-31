@@ -18,6 +18,10 @@ public class EmployeesService {
         return repository.save(employees);
     }
 
+    public void Delete(Employees employees){
+        repository.delete(employees);
+    }
+
     public List<Employees> GetAll(){
         return repository.findAll();
     }

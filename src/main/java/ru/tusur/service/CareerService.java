@@ -13,7 +13,12 @@ public class CareerService {
     @Autowired
     private CareerRepository repository;
 
+    @Autowired
+    private EmployeesService employees_service;
+
     public Career Save(Career career){
+        career.getEmployees().setPost(career.getPost());
+        employees_service.Save(career.getEmployees());
         return repository.save(career);
     }
 

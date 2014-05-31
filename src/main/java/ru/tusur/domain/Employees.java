@@ -1,7 +1,7 @@
 package ru.tusur.domain;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.sql.Date;
 
 
 @Entity
@@ -11,50 +11,43 @@ public class Employees {
     @GeneratedValue
     private int id;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 100, nullable = false)
     private String famaly;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 100, nullable = false)
     private String middleName;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 100, nullable = false)
     private  String name;
 
     @Enumerated(EnumType.STRING)
     private Post post;
 
     @Column(nullable = false)
-    private int age;
+    private Date bithDay;
 
     @Column(length = 11, nullable = false)
-    private int numberTel;
+    private String numberTel;
 
-    @Column(length = 300, nullable = false)
+    @Column(length = 700, nullable = false)
     private String address;
 
     @Column(length = 10, nullable = false)
-    private int Pasport;
+    private String Pasport;
 
     @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
-    private String login;
-
-    @Column(nullable = false)
     private String password;
 
-    private String code;
-
-    public int getAge() {
-        return age;
+    public Date getBithDay() {
+        return bithDay;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setBithDay(Date age) {
+        this.bithDay = age;
     }
-
-    public String getCode() {        return code;    }
 
     public String getAddress() {
         return address;
@@ -63,8 +56,6 @@ public class Employees {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    public void setCode(String code) {        this.code = code;    }
 
     public int getId() {
         return id;
@@ -106,19 +97,19 @@ public class Employees {
         this.post = post;
     }
 
-    public int getNumberTel() {
+    public String getNumberTel() {
         return numberTel;
     }
 
-    public void setNumberTel(int numberTel) {
+    public void setNumberTel(String numberTel) {
         this.numberTel = numberTel;
     }
 
-    public int getPasport() {
+    public String getPasport() {
         return Pasport;
     }
 
-    public void setPasport(int pasport) {
+    public void setPasport(String pasport) {
         Pasport = pasport;
     }
 
@@ -128,14 +119,6 @@ public class Employees {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getPassword() {

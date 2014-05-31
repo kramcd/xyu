@@ -7,7 +7,10 @@ package ru.tusur.domain;
  */
 public  enum applicationStatus {
 
-    NEW("Новая"), ASSIGNED("Принята"), REJECTED("Отклонена"), CANCEL("Отменена");
+    Новая("Новая"),
+    Принята("Принята"),
+    Отклонена("Отклонена"),
+    Отменена("Отменена");
 
     private String text;
 

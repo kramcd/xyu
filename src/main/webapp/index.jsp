@@ -8,20 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>main page</title>
+    <title>Главная страница</title>
 
 </head>
 <body>
 
-<a href="/city/">Cities list</a><br>
-
-<a href="/person/">Persons list</a><br>
-
-<a href="/country/">Countries list</a><br>
-
 <a href="/employees/">Список сотрудников</a><br>
-
-<a href="/career/">Карьерный рост</a><br>
 
 
 </body>

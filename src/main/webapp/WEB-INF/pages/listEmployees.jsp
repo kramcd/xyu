@@ -2,38 +2,61 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Список сотрудников</title>
+    <title>
+        <ol class="breadcrumb">
+            <li><a href="#">Список сотрудников</a></li>
+
+        </ol>
+    </title>
 </head>
 <body>
-    <table>
-        <tr>
-            <c:forEach items="${employeeses}" var="employees">
-                <td>
-                <c:out value="${employees.id}"/>
-                </td>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Должность</th>
+    </tr>
+    <tr>
+        <c:forEach items="${employeeses}" var="employees">
+        <td>
+            <a href="/employees/edit/?code=<c:out value="${employees.id}"/>">
+                    <c:out value="${employees.famaly}"/>
+        </td>
 
-                <td>
-                <a href="/employees/edit/?code=<c:out value="${employees.id}"/>">
-                <c:out value="${employees.name}"/>
-                </td>
+        <td>
+            <a href="/employees/edit/?code=<c:out value="${employees.id}"/>">
+                    <c:out value="${employees.name}"/>
+        </td>
 
-                <td>
-                <a href="/employees/edit/?code=<c:out value="${employees.id}"/>">
-                <c:out value="${employees.famaly}"/>
-                </td>
 
-                <td>
-                <a href="/employees/edit/?code=<c:out value="${employees.id}"/>">
-                <c:out value="${employees.middleName}"/>
-                </td>
+        <td>
+            <a href="/employees/edit/?code=<c:out value="${employees.id}"/>">
+                    <c:out value="${employees.middleName}"/>
+        </td>
 
-                <td>
-                <a href="/employees/edit/?code=<c:out value="${employees.id}"/>">
-                <c:out value="${employees.post}"/>
-                </td>
-                </c:forEach>
-        </tr>
-                <a href="/employees/edit/">Добавить нового сотрудника</a>
-    </table>
+        <td>
+            <a href="/employees/edit/?code=<c:out value="${employees.id}"/>">
+                    <c:out value="${employees.post}"/>
+        </td>
+
+        <td>
+            <a class="text-success" href="/employees/delete/?code=<c:out value="${employees.id}"/>">
+                <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus"></span>  <b>Удалить  сотрудника</b>
+                </button>
+            </a>
+
+        </td>
+
+
+    </tr>
+    </c:forEach>
+
+</table>
+<a class="text-success" href="/employees/edit/">
+    <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> <b>Добавить нового сотрудника</b>
+    </button>
+</a>
 </body>
 </html>

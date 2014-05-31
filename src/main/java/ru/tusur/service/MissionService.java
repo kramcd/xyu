@@ -21,6 +21,10 @@ public class MissionService {
         return repository.findAll();
     }
 
+    public List<Mission> FindByEmployees_id(Integer code){
+        return repository.findByEmployees_Id(code);
+    }
+
     public Mission FindById(Integer code){
         return repository.findOne(code);
     }

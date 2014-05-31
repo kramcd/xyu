@@ -18,4 +18,6 @@
 
     <mvc:resources mapping="resources/**" location="/resource/"/>
 
+
+
 </beans>

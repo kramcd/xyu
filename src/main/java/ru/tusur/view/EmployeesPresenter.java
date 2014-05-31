@@ -11,6 +11,8 @@ public class EmployeesPresenter {
 
     private Employees employees;
 
+    private String bithDay;
+
     public EmployeesPresenter(Employees employees){
         this.employees = employees;
     }
@@ -19,6 +21,13 @@ public class EmployeesPresenter {
         employees = new Employees();
     }
 
+    public String getBithDay() {
+        return bithDay;
+    }
+
+    public void setBithDay(String bithDay) {
+        this.bithDay = bithDay;
+    }
 
     public Employees getEmployees() {
         return employees;

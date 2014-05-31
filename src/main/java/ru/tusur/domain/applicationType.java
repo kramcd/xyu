@@ -3,9 +3,12 @@ package ru.tusur.domain;
 /**
  * Created by kramc_000 on 15.05.14.
  */
-public enum  applicationType {
+public enum applicationType {
 
-    HOLIDAYLONG("Отпуск"), HOSPITAL("Больничный"),HOLIDAYSHORT("Отгул"), STUSYLEAVE("Учеба");
+    Отпуск("Отпуск"),
+    Больничный("Больничный"),
+    Отгул("Отгул"),
+    Учеба("Учеба");
 
     private String text;
 
@@ -13,7 +16,7 @@ public enum  applicationType {
         return text;
     }
 
-    applicationType(String text){
+    applicationType(String text) {
         this.text = text;
     }
 

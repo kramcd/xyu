@@ -59,11 +59,12 @@ public class CareerController {
                 System.out.println(error.getDefaultMessage());
             }
         }
-        LocalDate date = LocalDate.parse(request.getParameter("career.date"), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        LocalDate date = LocalDate.parse(request.getParameter("date"), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         Instant instant = date.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
         presenter.getCareer().setDate( new java.sql.Date(Date.from(instant).getTime()));
         presenter.getCareer().setEmployees(employees_service.FindById(employeeId));
         service.Save(presenter.getCareer());
+
         return new ModelAndView("redirect:/career/?employees_code=" + employeeId);
     }
 

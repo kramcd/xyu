@@ -1,7 +1,7 @@
 package ru.tusur.domain;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.sql.Date;
 
 
 @Entity
@@ -10,14 +10,14 @@ public class Mission {
 
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     @Column(nullable = false)
-    private LocalDate dispatchDate;
+    private Date dispatchDate;
 
 
     @Column(nullable = false)
-    private LocalDate returnhDate;
+    private Date returnDate;
 
     @Column(nullable = false)
     private String place;
@@ -26,31 +26,38 @@ public class Mission {
     private int money;
 
     @ManyToOne
-    @JoinColumn(name = "idEmployees")
     private Employees employees;
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public LocalDate getDispatchDate() {
+    public Employees getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Employees employees) {
+        this.employees = employees;
+    }
+
+    public Date getDispatchDate() {
         return dispatchDate;
     }
 
-    public void setDispatchDate(LocalDate dispatchDate) {
+    public void setDispatchDate(Date dispatchDate) {
         this.dispatchDate = dispatchDate;
     }
 
-    public LocalDate getReturnhDate() {
-        return returnhDate;
+    public Date getReturnDate() {
+        return returnDate;
     }
 
-    public void setReturnhDate(LocalDate returnhDate) {
-        this.returnhDate = returnhDate;
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
     }
 
     public String getPlace() {

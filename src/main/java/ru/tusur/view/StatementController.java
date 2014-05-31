@@ -66,6 +66,11 @@ public class StatementController {
         instant  = eDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
         presenter.getStatement().setEndDate(new java.sql.Date(Date.from(instant).getTime()));
 
+        LocalDate date = LocalDate.parse(request.getParameter("statement.date"),
+                DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        instant  = date.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+        presenter.getStatement().setEndDate(new java.sql.Date(Date.from(instant).getTime()));
+
         presenter.getStatement().setEmployees(employees_service.FindById(employeesId));
 
         service.Save(presenter.getStatement());

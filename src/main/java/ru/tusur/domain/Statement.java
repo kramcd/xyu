@@ -22,6 +22,9 @@ public class Statement {
     private Employees employees;
 
     @Column(nullable = false)
+    private Date date;
+
+    @Column(nullable = false)
     private Date startDate;
 
     @Column(nullable = false)
@@ -33,6 +36,14 @@ public class Statement {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public applicationType getApplicationType() {

@@ -29,7 +29,8 @@ public class CareerController {
     EmployeesService employees_service;
 
     @RequestMapping(value = "/")
-    public ModelAndView careerList(@RequestParam(value = "employees_code", required = true) Integer employees_code){
+    public ModelAndView careerList(@RequestParam(value = "employees_code", required = true) Integer employees_code,
+                                   @ModelAttribute("careerview") CareerPresenter presenter){
         Collection<Career> careers = service.FindByEmployees_id(employees_code);
         return new ModelAndView("listCareer", "careers", careers);
     }

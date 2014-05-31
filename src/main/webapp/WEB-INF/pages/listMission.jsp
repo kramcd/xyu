@@ -7,7 +7,7 @@
             <li><a href="/employees/edit/?code=<%=request.getParameter("employees_code")%>">
                 Сотрудник: ${careerview.career.employees.name}
                 ${careerview.career.employees.famaly} ${careerview.career.employees.middleName}</a></li>
-            <li><a href="/career/<%=request.getParameter("employees_code")%>">Карьерный рост cписок записей</a></li>
+            <li><a href="/mission/<%=request.getParameter("employees_code")%>">Список коммандировок</a></li>
 
         </ol>
     </title>
@@ -18,17 +18,18 @@
 <table class="table">
 
     <tr>
-        <td>Должность</td>
-        <td>Дата</td>
-        <td>Комментарий</td>
+        <td>Место назначени</td>
+        <td>Дата отъезда</td>
+        <td>Дата приезда</td>
+        <td>Сумма денег в подотчет</td>
     </tr>
 
 
-        <c:forEach items="${careers}" var="career">
-            <tr>
+    <c:forEach items="${missions}" var="mission">
+        <tr>
             <td>
-                <a href="/career/<%=request.getParameter("employees_code")%>/edit/?code=<c:out value="${career.id}"/> ">
-                        <c:out value="${career.post}"/>
+                <a href="/mission/<%=request.getParameter("employees_code")%>/edit/?code=<c:out value="${mission.id}"/> ">
+                        <c:out value="${mission.place}"/>
             </td>
             <td>
                 <a href="/career/<%=request.getParameter("employees_code")%>/edit/?code=<c:out value="${career.id}"/> ">
@@ -45,8 +46,8 @@
                 </a>
 
             </td>
-    </tr>
-        </c:forEach>
+        </tr>
+    </c:forEach>
 
 
 </table>

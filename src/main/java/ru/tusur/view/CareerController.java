@@ -35,14 +35,15 @@ public class CareerController {
         return new ModelAndView("listCareer", "careers", careers);
     }
 
-    @RequestMapping(value = "/delete/")
-    public ModelAndView employeesDelete(@RequestParam(value = "code", required = false) String code,
-                                        @ModelAttribute("careerview") CareerPresenter presenter){
+    @RequestMapping(value = "/{employeeId}/delete/")
+    public ModelAndView careerDelete(@RequestParam(value = "code", required = false) String code,
+                                        @ModelAttribute("careerview") CareerPresenter presenter,
+                                        @PathVariable int employeeId){
         if(code == null || code.length()  <= 0){}
         else{
             service.Delete(service.FindById(Integer.parseInt(code)));
         }
-        return new ModelAndView("redirect:/career/");
+        return new ModelAndView("redirect:/career/?employees_code=" + employeeId);
     }
 
     @RequestMapping(value = "/{employeeId}/edit/")
@@ -70,9 +71,9 @@ public class CareerController {
                 System.out.println(error.getDefaultMessage());
             }
         }
-        LocalDate date = LocalDate.parse(request.getParameter("date"), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        Instant instant = date.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
-        presenter.getCareer().setDate( new java.sql.Date(Date.from(instant).getTime()));
+        LocalDate dDate = LocalDate.parse(request.getParameter("dDate"), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        Instant instant = dDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+        presenter.getCareer().setdDate( new java.sql.Date(Date.from(instant).getTime()));
         presenter.getCareer().setEmployees(employees_service.FindById(employeeId));
         service.Save(presenter.getCareer());
 

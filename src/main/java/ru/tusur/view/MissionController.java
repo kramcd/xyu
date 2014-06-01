@@ -34,6 +34,18 @@ public class MissionController {
         Collection<Mission> missions = service.FindByEmployees_id(employees_code);
         return new ModelAndView("listMission", "missions", missions);
     }
+
+    @RequestMapping(value = "/{employeeId}/delete/")
+    public ModelAndView missionDelete(@RequestParam(value = "code", required = false) String code,
+                                     @ModelAttribute("missionview") MissionPresenter presenter,
+                                     @PathVariable int employeeId){
+        if(code == null || code.length()  <= 0){}
+        else{
+            service.Delete(service.FindById(Integer.parseInt(code)));
+        }
+        return new ModelAndView("redirect:/mission/?employees_code=" + employeeId);
+    }
+
     @RequestMapping(value = "/{employeesId}/edit/")
     public ModelAndView missionEdit (@RequestParam(value = "code",required = false)
                                      String code, @PathVariable int employeesId,

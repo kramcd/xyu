@@ -15,7 +15,7 @@ public class Career {
     private Employees employees;
 
     @Column(name = "career_date")
-    private Date date;
+    private Date dDate;
 
     @Column(name = "career_comment")
     private String coment;
@@ -40,12 +40,12 @@ public class Career {
         this.employees = employees;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getdDate() {
+        return dDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setdDate(Date date) {
+        this.dDate = date;
     }
 
     public String getComent() {

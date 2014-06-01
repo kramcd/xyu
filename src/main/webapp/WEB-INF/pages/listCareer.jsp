@@ -32,14 +32,14 @@
             </td>
             <td>
                 <a href="/career/<%=request.getParameter("employees_code")%>/edit/?code=<c:out value="${career.id}"/> ">
-                        <c:out value="${career.date}"/>
+                        <c:out value="${career.dDate}"/>
             </td>
             <td>
                 <a href="/career/edit/?code=<c:out value="${career.id}"/> ">
                         <c:out value="${career.coment}"/>
             </td>
             <td>
-                <a class="text-success" href="/career/delete/?code=<c:out value="${employees.id}"/>">
+                <a class="text-success" href="/career/<%=request.getParameter("employees_code")%>/delete/?code=<c:out value="${career.id}"/>">
                     <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus"></span>  <b>Удалить  запись</b>
                     </button>
                 </a>

@@ -19,10 +19,11 @@
 <table class="table">
 
     <tr>
-        <td>Место назначени</td>
-        <td>Дата отъезда</td>
-        <td>Дата приезда</td>
-        <td>Сумма денег в подотчет</td>
+        <th>Место назначени</th>
+        <th>Дата отъезда</th>
+        <th>Дата приезда</th>
+        <th>Сумма денег в подотчет</th>
+        <th>Действия</th>
     </tr>
 
 
@@ -45,7 +46,7 @@
                         <c:out value="${mission.money}"/>
             </td>
             <td>
-                <a class="text-success" href="/mission/delete/?code=<c:out value="${employees.id}"/>">
+                <a class="text-success" href="/mission/<%=request.getParameter("employees_code")%>/delete/?code=<c:out value="${mission.id}"/>">
                     <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus"></span>  <b>Удалить  запись</b>
                     </button>
                 </a>

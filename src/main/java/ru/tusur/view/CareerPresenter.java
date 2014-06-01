@@ -6,14 +6,14 @@ public class CareerPresenter {
 
     private Career career;
 
-    private String date;
+    private String dDate;
 
-    public String getDate() {
-        return date;
+    public String getdDate() {
+        return dDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setdDate(String date) {
+        this.dDate = date;
     }
 
     public CareerPresenter(Career career) {

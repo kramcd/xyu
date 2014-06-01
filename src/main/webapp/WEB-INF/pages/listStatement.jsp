@@ -17,11 +17,12 @@
 
     <table class="table">
         <tr>
-            <td>Дата составления</td>
-            <td>С(дата)</td>
-            <td>По(дата)</td>
-            <td>Тип</td>
-            <td>Стутас</td>
+            <th>Дата составления</th>
+            <th>С(дата)</th>
+            <th>По(дата)</th>
+            <th>Тип</th>
+            <th>Стутас</th>
+            <th>Действия</th>
         </tr>
         <c:forEach items="${statements}" var="statement">
         <tr>
@@ -53,7 +54,13 @@
                 <c:out value="${statement.applicationStatus}"/>
             </a>
         </td>
+            <td>
+                <a class="text-success" href="/statement/<%=request.getParameter("employees_code")%>/delete/?code=<c:out value="${statement.id}"/>">
+                    <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus"></span>  <b>Удалить  запись</b>
+                    </button>
+                </a>
 
+            </td>
 
         </tr>
         </c:forEach>

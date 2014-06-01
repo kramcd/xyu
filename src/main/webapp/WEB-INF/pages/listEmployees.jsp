@@ -12,11 +12,11 @@
 <body>
 <table class="table">
     <tr>
-        <th>ID</th>
         <th>Фамилия</th>
         <th>Имя</th>
         <th>Отчество</th>
         <th>Должность</th>
+        <th>Действие</th>
     </tr>
     <tr>
         <c:forEach items="${employeeses}" var="employees">

@@ -34,6 +34,17 @@ public class StatementController {
         return new ModelAndView("listStatement", "statements", statements);
     }
 
+    @RequestMapping(value = "/{employeeId}/delete/")
+    public ModelAndView statementDelete(@RequestParam(value = "code", required = false) String code,
+                                     @ModelAttribute("statementview") StatementPresenter presenter,
+                                     @PathVariable int employeeId){
+        if(code == null || code.length()  <= 0){}
+        else{
+            service.Delete(service.FindById(Integer.parseInt(code)));
+        }
+        return new ModelAndView("redirect:/statement/?employees_code=" + employeeId);
+    }
+
     @RequestMapping(value = "/{employeesId}/edit/")
     public ModelAndView statementEdit (@RequestParam(value = "code",required = false)
                                      String code, @PathVariable int employeesId,

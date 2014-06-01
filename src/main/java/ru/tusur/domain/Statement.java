@@ -2,7 +2,6 @@ package ru.tusur.domain;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.time.LocalDate;
 
 @Entity
 public class Statement {
@@ -18,11 +17,10 @@ public class Statement {
     private applicationStatus applicationStatus;
 
     @ManyToOne
-    @JoinColumn(name = "idEmployees")
     private Employees employees;
 
     @Column(nullable = false)
-    private Date date;
+    private Date dpDate;
 
     @Column(nullable = false)
     private Date startDate;
@@ -38,12 +36,12 @@ public class Statement {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDpDate() {
+        return dpDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDpDate(Date dpDate) {
+        this.dpDate = dpDate;
     }
 
     public applicationType getApplicationType() {

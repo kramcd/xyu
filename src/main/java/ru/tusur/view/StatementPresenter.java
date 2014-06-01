@@ -5,7 +5,7 @@ import ru.tusur.domain.Statement;
 
 public class StatementPresenter {
 
-    private String date;
+    private String dpDate;
 
     private String startDate;
 
@@ -21,12 +21,12 @@ public class StatementPresenter {
         statement = new Statement();
     }
 
-    public String getDate() {
-        return date;
+    public String getDpDate() {
+        return dpDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDpDate(String dpDate) {
+        this.dpDate = dpDate;
     }
 
     public String getStartDate() {

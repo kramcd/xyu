@@ -3,6 +3,7 @@ package ru.tusur.view;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.tusur.domain.Statement;
@@ -32,6 +33,7 @@ public class StatementController {
         Collection<Statement> statements = service.FindByEmployees_id(employees_code);
         return new ModelAndView("listStatement", "statements", statements);
     }
+
     @RequestMapping(value = "/{employeesId}/edit/")
     public ModelAndView statementEdit (@RequestParam(value = "code",required = false)
                                      String code, @PathVariable int employeesId,
@@ -51,28 +53,27 @@ public class StatementController {
     @RequestMapping(value = "/{employeesId}/edit/save/", method = RequestMethod.POST)
     public ModelAndView statementPost(@ModelAttribute StatementPresenter presenter, BindingResult result,
                                     @PathVariable int employeesId, HttpServletRequest request){
-       /* if (result.hasErrors()){
-            for(ObjectError error : return result.getAllErrors()){
-                System.out.println(error.getDefault);
+        if (result.hasErrors()){
+            for (ObjectError error : result.getAllErrors()) {
+                System.out.println(error.getDefaultMessage());
             }
-        }*/
-        LocalDate sDate = LocalDate.parse(request.getParameter("statement.startDate"),
+        }
+        LocalDate sDate = LocalDate.parse(request.getParameter("startDate"),
                 DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         Instant instant  = sDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
         presenter.getStatement().setStartDate(new java.sql.Date(Date.from(instant).getTime()));
 
-        LocalDate eDate = LocalDate.parse(request.getParameter("statement.endDate"),
+        LocalDate eDate = LocalDate.parse(request.getParameter("endDate"),
                 DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         instant  = eDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
         presenter.getStatement().setEndDate(new java.sql.Date(Date.from(instant).getTime()));
 
-        LocalDate date = LocalDate.parse(request.getParameter("statement.date"),
+        LocalDate dpDate = LocalDate.parse(request.getParameter("dpDate"),
                 DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-        instant  = date.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
-        presenter.getStatement().setEndDate(new java.sql.Date(Date.from(instant).getTime()));
+        instant  = dpDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+        presenter.getStatement().setDpDate(new java.sql.Date(Date.from(instant).getTime()));
 
         presenter.getStatement().setEmployees(employees_service.FindById(employeesId));
-
         service.Save(presenter.getStatement());
 
         return new ModelAndView("redirect:/statement/?employees_code=" + employeesId);

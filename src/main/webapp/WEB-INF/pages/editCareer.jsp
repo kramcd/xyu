@@ -11,7 +11,7 @@
     <script type="text/javascript">
         $(function () {
             var today = new Date();
-            $('#date').datepicker();
+            $('#dDate').datepicker();
 
         });
     </script>
@@ -37,7 +37,7 @@
             </c:forEach>
             <form:options/>
         </form:select></br>
-        <form:input cssClass="form-control" placeholder="Дата" readonly="true" path="date" id="date"/></br>
+        <form:input cssClass="form-control" placeholder="Дата" readonly="true" path="dDate" id="dDate"/></br>
         <form:textarea cssClass="form-control" placeholder="Комментарий" path="career.coment"/></br>
 
 

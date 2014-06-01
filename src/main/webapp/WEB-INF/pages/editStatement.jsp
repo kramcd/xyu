@@ -4,50 +4,54 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Заявления, сотрудник:<b> ${statementnview.statement.employees.name}
-        ${statementnview.statement.employees.famaly} ${statementnview.statement.employees.middleName} </b></title>
+    <title>  <ol class="breadcrumb">
+        <li><a href="/statement/?employees_code=${statementview.statement.employees.id}">Список заявлений</a></li>
+        <li><a href="/employees/edit/?code=${statementnview.statement.employees.id}">Cотрудник: ${statementnview.statement.employees.name}
+            ${statementnview.statement.employees.famaly} ${statementnview.statement.employees.middleName}</a></li>
+        <li><a href="#">Добавление или изменение данных о заявлениях</a></li>
+
+
+    </ol></title>
+    <link rel="stylesheet" href="<c:url value="/resources/css/calendar.css" /> "/>
+    <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.7.2.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/jquery.ui.core.js" /> "></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/jquery.ui.datepicker.js"/>"></script>
+    <script type="text/javascript">
+        $(function () {
+            var today = new Date();
+            $('#dpDate').datepicker();
+            $('#startDate').datepicker();
+            $('#endDate').datepicker();
+        });
+    </script>
 </head>
 <body>
-<h3>Редактирование данных</h3>
+<div class="col-sm-8 blog-main">
 <form:form commandName="statementview" action="save/">
 
-    <table>
-        <tr>
-            <td>
-                Тип заявления
-            </td>
-            <td><form:select path="statement.applicationType">
+    <form:select cssClass="form-control" placeholder="Тип заявки" path="statement.applicationType">
                 <c:forEach var="item" items="${ru.tusur.domain.applicationType}">
                     <form:option value="{item.text}"><spring:eval expression="item"/></form:option>
                 </c:forEach>
                 <form:options/>
-            </form:select>
-            </td>
-        </tr>
-
-        <tr>
-            <td>Статус заявки</td>
-            <td><form:select path="statement.applicationStatus">
+            </form:select> </br>
+           <form:select cssClass="form-control" placeholder="Статус заявки" path="statement.applicationStatus">
                 <c:forEach var="item" items="${ru.tusur.domain.applicationStatus}">
                     <form:option value="{item.text}"><spring:eval expression="item"/></form:option>
                 </c:forEach>
                 <form:options/>
-            </form:select></td>
-        </tr>
+            </form:select></br>
 
-        <tr>
-            <td>Дата начала</td>
-            <td><form:input path="statement.startDate"/></td>
-        </tr>
+    <form:input cssClass="form-control" placeholder="Дата с" path="startDate" id="startDate"/></br>
+    <form:input cssClass="form-control" placeholder="Дата по" path="endDate" id="endDate"/></br>
+    <form:input cssClass="form-control" placeholder="Дата подачи заявления" path="dpDate" id="dpDate"/></br>
 
-        <tr>
-            <td>Дата окончания</td>
-            <td><form:input path="statement.endDate"/></td>
-        </tr>
-
-    </table>
-        <input class="btn-success" type="submit" value="Сохранить">
+    <button class="btn btn-default btn-info btn-lg" value="Сохранить" type="submit"><span
+            class="glyphicon glyphicon-ok"></span>
+        Сохранить
+    </button>
 
 </form:form>
+    </div>
 </body>
 </html>

@@ -6,33 +6,31 @@
     <title>
         <ol class="breadcrumb">
             <li><a href="/employees/edit/?code=<%=request.getParameter("employees_code")%>">
-                Сотрудник: ${statementnview.statement.employees.name}
-                ${statementnview.statement.employees.famaly} ${statementnview.statement.employees.middleName}</a></li>
+                Сотрудник: ${statementview.statement.employees.name}
+                ${statementview.statement.employees.famaly} ${statementview.statement.employees.middleName}</a></li>
             <li><a href="/statement/<%=request.getParameter("employees_code")%>">Список заявлений</a></li>
 
         </ol>
     </title>
 </head>
 <body>
-<c:forEach items="${statements}" var="statement">
+
     <table class="table">
         <tr>
-
-
-        <tr>
-            <td></td>
-            <td>Дата составления я</td>
+            <td>Дата составления</td>
             <td>С(дата)</td>
             <td>По(дата)</td>
             <td>Тип</td>
             <td>Стутас</td>
         </tr>
-
+        <c:forEach items="${statements}" var="statement">
+        <tr>
         <td>
             <a href="/statement/<%=request.getParameter("employees_code")%>/edit/?code=<c:out value="${statement.id}"/> ">
-                <c:out value="${statement.date}"/>
+                <c:out value="${statement.dpDate}"/>
             </a>
         </td>
+
 
         <td>
             <a href="/statement/<%=request.getParameter("employees_code")%>/edit/?code=<c:out value="${statement.id}"/> ">
@@ -58,6 +56,7 @@
 
 
         </tr>
+        </c:forEach>
     </table>
 
     <a class="text-success" href="/statement/<%=request.getParameter("employees_code")%>/edit/">
@@ -66,7 +65,7 @@
         </button>
     </a>
 
-</c:forEach>
+
 
 </body>
 </html>

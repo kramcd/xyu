@@ -4,9 +4,9 @@
 <head>
     <title>
         <ol class="breadcrumb">
-            <li><a href="/employees/edit/?code=<%=request.getParameter("employees_code")%>">
-                Сотрудник: ${careerview.career.employees.name}
-                ${careerview.career.employees.famaly} ${careerview.career.employees.middleName}</a></li>
+            <li><a href="/employees/edit/?code=${careerview.id}">
+                Сотрудник: ${careerview.name}
+                ${careerview.famaly} ${careerview.middleName}</a></li>
             <li><a href="/career/<%=request.getParameter("employees_code")%>">Карьерный рост cписок записей</a></li>
 
         </ol>

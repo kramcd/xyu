@@ -37,7 +37,7 @@
             <form:options/>
         </form:select></br>
 
-
+        <form:hidden path="employees.id"/>
         <form:input placeholder="Паспорт(серсия, номер)" cssClass="form-control" path="employees.pasport"/>
         </br>
         <div class="input-group"><span class="input-group-addon">+7</span>

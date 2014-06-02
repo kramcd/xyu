@@ -36,6 +36,12 @@ public class Employees {
     private String Pasport;
 
     @Column(nullable = false)
+    private String role;
+
+    @Column(nullable = false)
+    private String username;
+
+    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
@@ -71,6 +77,14 @@ public class Employees {
 
     public void setFamaly(String famaly) {
         this.famaly = famaly;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getMiddleName() {
@@ -123,6 +137,14 @@ public class Employees {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public void setPassword(String password) {

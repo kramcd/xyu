@@ -32,7 +32,10 @@ public class CareerController {
     public ModelAndView careerList(@RequestParam(value = "employees_code", required = true) Integer employees_code,
                                    @ModelAttribute("careerview") CareerPresenter presenter){
         Collection<Career> careers = service.FindByEmployees_id(employees_code);
-        return new ModelAndView("listCareer", "careers", careers);
+        ModelAndView result = new ModelAndView("listCareer");
+        result.addObject("careers", careers);
+        result.addObject("careerview", employees_service.FindById(employees_code));
+        return result;
     }
 
     @RequestMapping(value = "/{employeeId}/delete/")
@@ -73,7 +76,7 @@ public class CareerController {
         }
         LocalDate dDate = LocalDate.parse(request.getParameter("dDate"), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         Instant instant = dDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
-        presenter.getCareer().setdDate( new java.sql.Date(Date.from(instant).getTime()));
+        presenter.getCareer().setdDate(new java.sql.Date(Date.from(instant).getTime()));
         presenter.getCareer().setEmployees(employees_service.FindById(employeeId));
         service.Save(presenter.getCareer());
 

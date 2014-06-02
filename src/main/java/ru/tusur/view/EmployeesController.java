@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.tusur.domain.Employees;
 import ru.tusur.service.EmployeesService;
+import ru.tusur.util.DateUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
@@ -46,6 +47,7 @@ public class EmployeesController {
         if(code == null || code.length()  <= 0){}
         else{
             presenter.setEmployees(service.FindById(Integer.parseInt(code)));
+            presenter.setBithDay(DateUtils.stringFromLocalDate(DateUtils.localFromSqlDate(presenter.getEmployees().getBithDay())));
         }
         return new ModelAndView("editEmployees", "employeesview", presenter);
     }
@@ -63,7 +65,7 @@ public class EmployeesController {
         LocalDate date = LocalDate.parse(request.getParameter("bithDay"), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         Instant instant = date.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
         presenter.getEmployees().setBithDay( new java.sql.Date(Date.from(instant).getTime()));
-        service.Save(presenter.getEmployees());
+        presenter.setEmployees(service.Save(presenter.getEmployees()));
         return new ModelAndView("redirect:/employees/");
     }
 }

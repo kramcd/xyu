@@ -22,6 +22,10 @@ public class EmployeesService {
         repository.delete(employees);
     }
 
+    public Employees FindByEmail(String email){
+        return repository.findByEmail(email);
+    }
+
     public List<Employees> GetAll(){
         return repository.findAll();
     }

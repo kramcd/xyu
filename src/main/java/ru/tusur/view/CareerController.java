@@ -1,5 +1,6 @@
 package ru.tusur.view;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -7,6 +8,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.tusur.domain.Career;
+import ru.tusur.domain.Employees;
 import ru.tusur.service.CareerService;
 import ru.tusur.service.EmployeesService;
 
@@ -28,6 +30,13 @@ public class CareerController {
     @Autowired
     EmployeesService employees_service;
 
+    @RequestMapping(value = "/{employeesEmail}/")
+    public ModelAndView careerListEmployeesEmail(@PathVariable String employeesEmail,
+                                                 @ModelAttribute("careerview") CareerPresenter presenter){
+       Employees result = employees_service.FindByEmail(employeesEmail);
+       return careerList(result.getId(), presenter);
+    }
+
     @RequestMapping(value = "/")
     public ModelAndView careerList(@RequestParam(value = "employees_code", required = true) Integer employees_code,
                                    @ModelAttribute("careerview") CareerPresenter presenter){
@@ -36,6 +45,14 @@ public class CareerController {
         result.addObject("careers", careers);
         result.addObject("careerview", employees_service.FindById(employees_code));
         return result;
+    }
+
+    @RequestMapping(value = "/{employeesEmail}/delete")
+    public ModelAndView careerdeleteEmployeesEmail(@PathVariable String employeesEmail,
+                                                 @ModelAttribute("careerview") CareerPresenter presenter){
+        Employees result = employees_service.FindByEmail(employeesEmail);
+
+        return careerDelete(null, presenter, result.getId());
     }
 
     @RequestMapping(value = "/{employeeId}/delete/")
@@ -49,10 +66,18 @@ public class CareerController {
         return new ModelAndView("redirect:/career/?employees_code=" + employeeId);
     }
 
+    @RequestMapping(value = "/{employeesEmail}/edit/")
+    public ModelAndView careerEditEmployeesEmail(@PathVariable String employeesEmail,
+                                                   @ModelAttribute("careerview") CareerPresenter presenter){
+        Employees result = employees_service.FindByEmail(employeesEmail);
+
+        return careerEdit(null, presenter, result.getId());
+    }
+
     @RequestMapping(value = "/{employeeId}/edit/")
     public ModelAndView careerEdit(@RequestParam(value = "code", required = false) String code,
-                                   @PathVariable int employeeId,
-                                   @ModelAttribute("careerview") CareerPresenter presenter){
+                                   @ModelAttribute("careerview") CareerPresenter presenter,
+                                   @PathVariable int employeeId){
         Career career;
         if(code == null || code.length() <= 0){
             career = new Career();
@@ -65,15 +90,20 @@ public class CareerController {
         return new ModelAndView("editCareer", "careerview", presenter);
     }
 
+    @RequestMapping(value = "/{employeesEmail}/edit/save")
+    public ModelAndView careerPostEmployeesEmail(@PathVariable String employeesEmail,
+                                                 @ModelAttribute("careerview") CareerPresenter presenter,
+                                                 HttpServletRequest request){
+        Employees result = employees_service.FindByEmail(employeesEmail);
+
+        return careerPost(presenter, result.getId(), request);
+    }
+
     @RequestMapping(value = "/{employeeId}/edit/save/", method = RequestMethod.POST)
-    public ModelAndView careerPost(@ModelAttribute CareerPresenter presenter, BindingResult result,
+    public ModelAndView careerPost(@ModelAttribute CareerPresenter presenter,
                                    @PathVariable int employeeId,
                                    HttpServletRequest request){
-        if (result.hasErrors()){
-            for (ObjectError error : result.getAllErrors()) {
-                System.out.println(error.getDefaultMessage());
-            }
-        }
+
         LocalDate dDate = LocalDate.parse(request.getParameter("dDate"), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         Instant instant = dDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
         presenter.getCareer().setdDate(new java.sql.Date(Date.from(instant).getTime()));

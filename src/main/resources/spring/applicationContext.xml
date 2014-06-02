@@ -8,17 +8,12 @@
 
     <context:annotation-config />
 
-    <jdbc:embedded-database id="dataSource">
-       <jdbc:script location="classpath:/db/db.sql" />
-    </jdbc:embedded-database>
-
-
     <bean class="ru.tusur.Launcher" />
 
     <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="oracle.jdbc.OracleDriver
         "/>
-        <property name="url" value="jdbc:oracle:thin:@192.168.1.16:1521:xe"/>
+        <property name="url" value="jdbc:oracle:thin:@192.168.1.15:1521:xe"/>
         <property name="username" value="servicedb"/>
         <property name="password" value="oracle"/>
     </bean>

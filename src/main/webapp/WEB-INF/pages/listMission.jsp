@@ -6,8 +6,8 @@
     <title>
         <ol class="breadcrumb">
             <li><a href="/employees/edit/?code=<%=request.getParameter("employees_code")%>">
-                Сотрудник: ${missionview.mission.employees.name}
-                ${missionview.mission.employees.famaly} ${missionview.mission.employees.middleName}</a></li>
+                Сотрудник: ${missionview.famaly} ${missionview.name}
+                 ${missionview.middleName}</a></li>
             <li><a href="/mission/<%=request.getParameter("employees_code")%>">Список коммандировок</a></li>
 
         </ol>

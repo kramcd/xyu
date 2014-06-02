@@ -35,11 +35,8 @@ public class Employees {
     @Column(length = 10, nullable = false)
     private String Pasport;
 
-    @Column(nullable = false)
-    private String role;
-
-    @Column(nullable = false)
-    private String username;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Column(nullable = false)
     private String email;
@@ -77,14 +74,6 @@ public class Employees {
 
     public void setFamaly(String famaly) {
         this.famaly = famaly;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getMiddleName() {
@@ -139,15 +128,15 @@ public class Employees {
         return password;
     }
 
-    public String getRole() {
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

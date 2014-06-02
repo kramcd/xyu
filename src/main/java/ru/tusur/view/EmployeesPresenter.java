@@ -11,6 +11,8 @@ public class EmployeesPresenter {
 
     private Employees employees;
 
+    private String id;
+
     private String bithDay;
 
     public EmployeesPresenter(Employees employees){
@@ -23,6 +25,14 @@ public class EmployeesPresenter {
 
     public String getBithDay() {
         return bithDay;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setBithDay(String bithDay) {

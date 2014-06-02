@@ -1,5 +1,7 @@
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -13,19 +15,18 @@
     <link rel="shortcut icon" href="/resources/favicon.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="/resources/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/resources/css/bootstrap.css" />
-    <link rel="stylesheet" href="/resources/css/bootstrap-responsive.css" />
-    <title>АИС учета персональных данных сотрудников ИП Кунгуров А.Н (сеть магазинов Русское ТВ) <decorator:title default="Undefined page"/></title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/resources/css/bootstrap-responsive.css"/>
+    <title>АИС учета персональных данных сотрудников ИП Кунгуров А.Н (сеть магазинов Русское ТВ) <decorator:title
+            default="Undefined page"/></title>
 
-    <decorator:head />
+    <decorator:head/>
     <!-- Bootstrap core CSS -->
     <!--<link href="/resources/css/bootstrap.min.css" rel="stylesheet">  --!>
 
-   <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
-
     <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="/resources/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="/resources/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -35,51 +36,47 @@
 </head>
 
 <body>
-
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <img src="/resources/logo.png" alt="Русское ТВ логотип"/>
         </div>
         <div class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" role="form">
-                <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control">
+            <security:authorize access="isAuthenticated()">
+                <div class="navbar-brand"> Добро пожаловать, ${view.name} !
+                    <a href="j_spring_security_logout">
+                        <button class="btn btn-danger">Выйти</button>
+                    </a>
                 </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
+            </security:authorize>
+            <security:authorize access="isAnonymous()">
+                <form class="navbar-form navbar-right" role="form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">Войти</button>
+                </form>
+            </security:authorize>
         </div><!--/.navbar-collapse -->
     </div>
 </div>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
-    <div class="container">
-        <decorator:title default="Главная страница"/>
+    <decorator:title/>
     </div>
-</div>
-
-
 <div class="container">
-    <decorator:body />
-
+    <decorator:body/>
 
 
     <footer style="float: left; width: 100%">
         <hr>
         <p style="text-align: center">&copy; Разработал Верещагин Роман Евгеньевич в 2014 г.</p>
     </footer>
-</div> <!-- /container -->
-
+</div>
+<!-- /container -->
 
 
 </body>

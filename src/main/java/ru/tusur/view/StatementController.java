@@ -31,7 +31,10 @@ public class StatementController {
     public ModelAndView statementList(@RequestParam(value = "employees_code",
             required = true) Integer employees_code){
         Collection<Statement> statements = service.FindByEmployees_id(employees_code);
-        return new ModelAndView("listStatement", "statements", statements);
+        ModelAndView result = new ModelAndView("listStatement");
+        result.addObject("statements", statements);
+        result.addObject("statementview", employees_service.FindById(employees_code));
+        return result;
     }
 
     @RequestMapping(value = "/{employeeId}/delete/")

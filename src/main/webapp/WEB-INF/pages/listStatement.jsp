@@ -6,8 +6,8 @@
     <title>
         <ol class="breadcrumb">
             <li><a href="/employees/edit/?code=<%=request.getParameter("employees_code")%>">
-                Сотрудник: ${statementview.statement.employees.name}
-                ${statementview.statement.employees.famaly} ${statementview.statement.employees.middleName}</a></li>
+                Сотрудник:  ${statementview.famaly} ${statementview.name}
+                ${statementview.middleName}</a></li>
             <li><a href="/statement/<%=request.getParameter("employees_code")%>">Список заявлений</a></li>
 
         </ol>

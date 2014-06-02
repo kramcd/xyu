@@ -53,6 +53,13 @@
 
         <form:input placeholder="Пароль" cssClass="form-control" path="employees.password"/> </br>
 
+        <form:select placeholder="Роль" cssClass="form-control" path="employees.role"> </br>
+            <c:forEach var="item" items="${ru.tusur.domain.Role}">
+                <form:option value="{item.text}"><spring:eval expression="item"/></form:option>
+            </c:forEach>
+            <form:options/>
+        </form:select></br>
+
         <form:input readonly="false" placeholder="День рождения" cssClass="form-control" path="bithDay"
                     id="bithDay"/> </br>
 

@@ -32,7 +32,10 @@ public class MissionController {
     public ModelAndView missionList(@RequestParam(value = "employees_code",
             required = true) Integer employees_code){
         Collection<Mission> missions = service.FindByEmployees_id(employees_code);
-        return new ModelAndView("listMission", "missions", missions);
+        ModelAndView result = new ModelAndView("listMission");
+        result.addObject("missions", missions);
+        result.addObject("missionview", employees_service.FindById(employees_code));
+        return result;
     }
 
     @RequestMapping(value = "/{employeeId}/delete/")

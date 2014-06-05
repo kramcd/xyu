@@ -22,7 +22,7 @@
             </button>
         </a><br/></br>
     </security:authorize>
-    <a class="text-info" href="" >
+    <a class="text-info" href="/career/?employees_code=<c:out value="${view.id}" />" >
         <button style="width:100%" class="btn btn-warning" value=" Посмотреть историю карьеры    ">
             <span class="glyphicon glyphicon-signal"></span>
             Посмотреть историю карьеры
@@ -36,7 +36,7 @@
         </button>
     </a><br/></br>
 
-    <a class="text-info" href="/statement/?employees_code=<c:out value="${employeesview.employees.id}" />">
+    <a class="text-info" href="/statement/?employees_code=<c:out value="${view.id}" />">
         <button style="width:100%" class="btn btn-warning" value=" Посмотреть список заявлений   ">
             <span class="glyphicon glyphicon-file"></span>
             Посмотреть список заявлений

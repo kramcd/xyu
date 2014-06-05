@@ -30,12 +30,6 @@ public class CareerController {
     @Autowired
     EmployeesService employees_service;
 
-    @RequestMapping(value = "/{employeesEmail}/")
-    public ModelAndView careerListEmployeesEmail(@PathVariable String employeesEmail,
-                                                 @ModelAttribute("careerview") CareerPresenter presenter){
-       Employees result = employees_service.FindByEmail(employeesEmail);
-       return careerList(result.getId(), presenter);
-    }
 
     @RequestMapping(value = "/")
     public ModelAndView careerList(@RequestParam(value = "employees_code", required = true) Integer employees_code,
@@ -47,14 +41,6 @@ public class CareerController {
         return result;
     }
 
-    @RequestMapping(value = "/{employeesEmail}/delete")
-    public ModelAndView careerdeleteEmployeesEmail(@PathVariable String employeesEmail,
-                                                 @ModelAttribute("careerview") CareerPresenter presenter){
-        Employees result = employees_service.FindByEmail(employeesEmail);
-
-        return careerDelete(null, presenter, result.getId());
-    }
-
     @RequestMapping(value = "/{employeeId}/delete/")
     public ModelAndView careerDelete(@RequestParam(value = "code", required = false) String code,
                                         @ModelAttribute("careerview") CareerPresenter presenter,
@@ -64,14 +50,6 @@ public class CareerController {
             service.Delete(service.FindById(Integer.parseInt(code)));
         }
         return new ModelAndView("redirect:/career/?employees_code=" + employeeId);
-    }
-
-    @RequestMapping(value = "/{employeesEmail}/edit/")
-    public ModelAndView careerEditEmployeesEmail(@PathVariable String employeesEmail,
-                                                   @ModelAttribute("careerview") CareerPresenter presenter){
-        Employees result = employees_service.FindByEmail(employeesEmail);
-
-        return careerEdit(null, presenter, result.getId());
     }
 
     @RequestMapping(value = "/{employeeId}/edit/")
@@ -90,14 +68,7 @@ public class CareerController {
         return new ModelAndView("editCareer", "careerview", presenter);
     }
 
-    @RequestMapping(value = "/{employeesEmail}/edit/save")
-    public ModelAndView careerPostEmployeesEmail(@PathVariable String employeesEmail,
-                                                 @ModelAttribute("careerview") CareerPresenter presenter,
-                                                 HttpServletRequest request){
-        Employees result = employees_service.FindByEmail(employeesEmail);
 
-        return careerPost(presenter, result.getId(), request);
-    }
 
     @RequestMapping(value = "/{employeeId}/edit/save/", method = RequestMethod.POST)
     public ModelAndView careerPost(@ModelAttribute CareerPresenter presenter,

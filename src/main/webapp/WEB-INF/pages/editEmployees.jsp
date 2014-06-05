@@ -30,6 +30,13 @@
         <form:input placeholder="Имя" cssClass="form-control" path="employees.name"/> </br>
         <form:input placeholder="Отчество" cssClass="form-control" path="employees.middleName"/> </br>
 
+        <form:select placeholder="Пол" cssClass="form-control" path="employees.gender"> </br>
+            <c:forEach var="item" items="${ru.tusur.domain.Gender}">
+                <form:option value="{item.text}"><spring:eval expression="item"/></form:option>
+            </c:forEach>
+            <form:options/>
+        </form:select></br>
+
         <form:select placeholder="Должность" cssClass="form-control" path="employees.post"> </br>
             <c:forEach var="item" items="${ru.tusur.domain.Post}">
                 <form:option value="{item.text}"><spring:eval expression="item"/></form:option>
@@ -40,6 +47,10 @@
         <form:hidden path="employees.id"/>
         <form:input placeholder="Паспорт(серсия, номер)" cssClass="form-control" path="employees.pasport"/>
         </br>
+
+        <form:input placeholder="Номер ПФР " cssClass="form-control" path="employees.numberPFR"/>
+        </br>
+
         <div class="input-group"><span class="input-group-addon">+7</span>
             <form:input placeholder="Номер телефона" cssClass="form-control" path="employees.numberTel"/></div>
         </br>

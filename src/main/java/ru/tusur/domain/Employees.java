@@ -11,29 +11,35 @@ public class Employees {
     @GeneratedValue
     private int id;
 
-    @Column(length = 100, nullable = false)
+    @Column(nullable = false)
     private String famaly;
 
-    @Column(length = 100, nullable = false)
+    @Column(nullable = false)
     private String middleName;
 
-    @Column(length = 100, nullable = false)
+    @Column(nullable = false)
     private  String name;
 
     @Enumerated(EnumType.STRING)
     private Post post;
 
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
     @Column(nullable = false)
     private Date bithDay;
 
-    @Column(length = 11, nullable = false)
+    @Column(nullable = false)
     private String numberTel;
 
-    @Column(length = 700, nullable = false)
+    @Column(nullable = false)
     private String address;
 
-    @Column(length = 10, nullable = false)
+    @Column(nullable = false)
     private String Pasport;
+
+    @Column(nullable = false)
+    private String numberPFR;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -66,6 +72,22 @@ public class Employees {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNumberPFR() {
+        return numberPFR;
+    }
+
+    public void setNumberPFR(String numberPFR) {
+        this.numberPFR = numberPFR;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public String getFamaly() {

@@ -39,7 +39,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <img src="/resources/logo.png" alt="Русское ТВ логотип"/>
+            <a href="http://localhost:8080/"> <img src="/resources/logo.png" alt="Русское ТВ логотип"/> </a>
         </div>
         <div class="navbar-collapse collapse">
             <security:authorize access="isAuthenticated()">
@@ -50,14 +50,20 @@
                 </div>
             </security:authorize>
             <security:authorize access="isAnonymous()">
-                <form action="<c:url value="/j_spring_security_check"/>" class="navbar-form navbar-right" role="form">
+
+                <form action="<c:url value="/j_spring_security_check"/>" class="navbar-form navbar-right" method="POST" role="form">
                     <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control">
+                        <input type="text" placeholder="Email" id="email" name="j_username" class="form-control">
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Password" class="form-control">
+                        <input type="password" id="password" placeholder="Password" name="j_password" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-success">Войти</button>
+<br>
+                    <div style="width:100%; margin-top: 14px; font-size: 18px; color: #ffffff" class="form-group">
+                        <input type="checkbox" name="_spring_security_remember_me" />
+                       Запомнить
+                      <button style="width: 50px; float: right" type="submit" class="btn btn-success">Войти</button>
+                    </div>
                 </form>
             </security:authorize>
         </div><!--/.navbar-collapse -->

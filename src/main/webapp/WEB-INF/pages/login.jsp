@@ -3,19 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Вход в приложение</title>
-    <style type="text/css">
-        .center-div {
-            margin: 0 auto;
-            width: 60%;
-        }
-    </style>
+    <title>
+        <ol class="breadcrumb">
+            <li>Вход в приложение</li>
+        </ol>
+    </title>
+
 </head>
 <body>
 
-<div class="container center-div">
-
-    <form class="form-horizontal" action="<c:url value="/j_spring_security_check"/>" method="POST">
+<div  style="margin-left: 290px; font-weight: bold; font-size: 16px">
+    Если вы знаете ваш логин и пароль, авторизуйтесь, пожалуйста
+    <img src="/resources/arrow.png" alt="Русское ТВ логотип"/>
+</div>
+   <!-- <form class="form-horizontal" action="<c:url value="/j_spring_security_check"/>" method="POST">
 
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label">E-mail</label>
@@ -43,9 +44,9 @@
             </div>
         </div>
 
-    </form>
+    </form> -->
 
-</div>
+
 
 </body>
 </html>

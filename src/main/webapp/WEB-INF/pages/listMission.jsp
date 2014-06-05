@@ -1,14 +1,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>
         <ol class="breadcrumb">
-            <li><a href="/employees/edit/?code=<%=request.getParameter("employees_code")%>">
+            <li>
+            <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
+            <a href="/employees/edit/?code=<%=request.getParameter("employees_code")%>">
+                </security:authorize>
                 Сотрудник: ${missionview.famaly} ${missionview.name}
-                 ${missionview.middleName}</a></li>
-            <li><a href="/mission/<%=request.getParameter("employees_code")%>">Список коммандировок</a></li>
+                ${missionview.middleName}
+                <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
+            </a>
+            </security:authorize>
+            </li>
+            <li>
+            <a href="/mission/<%=request.getParameter("employees_code")%>">Список коммандировок</a>
+            </li>
 
         </ol>
     </title>
@@ -30,37 +40,53 @@
     <c:forEach items="${missions}" var="mission">
         <tr>
             <td>
+                <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
                 <a href="/mission/<%=request.getParameter("employees_code")%>/edit/?code=<c:out value="${mission.id}"/> ">
+                    </security:authorize>
                         <c:out value="${mission.place}"/>
             </td>
             <td>
+                <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
                 <a href="/mission/<%=request.getParameter("employees_code")%>/edit/?code=<c:out value="${mission.id}"/> ">
+                    </security:authorize>
                         <c:out value="${mission.dispatchDate}"/>
             </td>
             <td>
+                <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
                 <a href="/mission/<%=request.getParameter("employees_code")%>/edit/?code=<c:out value="${mission.id}"/> ">
+                    </security:authorize>
                         <c:out value="${mission.returnDate}"/>
             </td>
             <td>
+                <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
                 <a href="/mission/<%=request.getParameter("employees_code")%>/edit/?code=<c:out value="${mission.id}"/> ">
+                    </security:authorize>
                         <c:out value="${mission.money}"/>
             </td>
-            <td>
-                <a class="text-success" href="/mission/<%=request.getParameter("employees_code")%>/delete/?code=<c:out value="${mission.id}"/>">
-                    <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus"></span>  <b>Удалить  запись</b>
-                    </button>
-                </a>
+            <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
+                <td>
 
-            </td>
+                    <a class="text-success"
+                       href="/mission/<%=request.getParameter("employees_code")%>/delete/?code=<c:out value="${mission.id}"/>">
+                        <button class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus"></span> <b>Удалить
+                            запись</b>
+                        </button>
+                    </a>
+
+                </td>
+            </security:authorize>
+
         </tr>
     </c:forEach>
 
 
 </table>
-
-<a class="text-success" href="/mission/<%=request.getParameter("employees_code")%>/edit/">
-    <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>
-        <b>Добавить запись</b>
-    </button></a>
+<security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
+    <a class="text-success" href="/mission/<%=request.getParameter("employees_code")%>/edit/">
+        <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>
+            <b>Добавить запись</b>
+        </button>
+    </a>
+</security:authorize>
 </body>
 </html>

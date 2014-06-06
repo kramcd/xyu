@@ -30,6 +30,9 @@ public class Employees {
     private Date bithDay;
 
     @Column(nullable = false)
+    private Date employeementDate;
+
+    @Column(nullable = false)
     private String numberTel;
 
     @Column(nullable = false)
@@ -64,6 +67,14 @@ public class Employees {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Date getEmployeementDate() {
+        return employeementDate;
+    }
+
+    public void setEmployeementDate(Date employeementDate) {
+        this.employeementDate = employeementDate;
     }
 
     public int getId() {

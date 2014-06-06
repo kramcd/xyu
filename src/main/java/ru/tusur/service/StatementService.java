@@ -14,7 +14,7 @@ public class StatementService {
 
     private static final String MAIL_SUBJECT = "Статус вашего заявления изменен !";
 
-    private static final String MAIL_BODY = "%s %s %s, статус по вашей заявке №%d изменен<br/>"+
+    private static final String MAIL_BODY = "%s %s %s, статус по вашему заявлению изменен<br/>"+
             "Посмореть статус вы можете в своем личном кабинете<br/>"+
             "Да прибудет с вами сила (: !";
 
@@ -29,8 +29,8 @@ public class StatementService {
         String body = String.format(MAIL_BODY,
                 statement.getEmployees().getFamaly(),
                 statement.getEmployees().getName(),
-                statement.getEmployees().getMiddleName(),
-                statement.getId());
+                statement.getEmployees().getMiddleName());
+
         String to = statement.getEmployees().getEmail();
         notifier.sendNotification(MAIL_FROM, to, MAIL_SUBJECT, body);
         return repository.save(statement);

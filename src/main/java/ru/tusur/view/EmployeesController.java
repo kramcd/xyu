@@ -65,6 +65,11 @@ public class EmployeesController {
         LocalDate date = LocalDate.parse(request.getParameter("bithDay"), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         Instant instant = date.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
         presenter.getEmployees().setBithDay( new java.sql.Date(Date.from(instant).getTime()));
+
+        LocalDate edate = LocalDate.parse(request.getParameter("employeementDate"), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        instant = edate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+        presenter.getEmployees().setEmployeementDate(new java.sql.Date(Date.from(instant).getTime()));
+
         presenter.setEmployees(service.Save(presenter.getEmployees()));
         return new ModelAndView("redirect:/employees/");
     }

@@ -17,7 +17,7 @@
     </script>
     <title>
         <ol class="breadcrumb">
-            <li><a href="/employees/edit/?code=<%=request.getParameter("employees_code")%>">
+            <li><a href="/employees/edit/?code=${missionview.mission.employees.id}">
                 Сотрудник: ${careerview.career.employees.name}
                 ${careerview.career.employees.famaly} ${careerview.career.employees.middleName}</a></li>
             <li><a href="/career/<%=request.getParameter("employees_code")%>/edit/">Карьерный рост редактирование

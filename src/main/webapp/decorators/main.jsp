@@ -43,7 +43,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <security:authorize access="isAuthenticated()">
-                <div class="navbar-brand"> Добро пожаловать, ${view.name} !
+                <div class="navbar-brand"> Вы зашли под логином: <security:authentication property="name"/> !
                     <a href="j_spring_security_logout">
                         <button class="btn btn-danger">Выйти</button>
                     </a>
@@ -59,10 +59,10 @@
                         <input type="password" id="password" placeholder="Password" name="j_password" class="form-control">
                     </div>
 <br>
-                    <div style="width:100%; margin-top: 14px; font-size: 18px; color: #ffffff" class="form-group">
+                    <div style="padding-right:5px; width:100%; margin-top: 5px; font-size: 18px; color: #ffffff" class="form-group">
                         <input type="checkbox" name="_spring_security_remember_me" />
                        Запомнить
-                      <button style="width: 50px; float: right" type="submit" class="btn btn-success">Войти</button>
+                      <button style="width: 192px; float: right" type="submit" class="btn btn-success">Войти</button>
                     </div>
                 </form>
             </security:authorize>
@@ -71,7 +71,9 @@
 </div>
 
 <div class="jumbotron">
+<div class="container center-block">
     <decorator:title/>
+</div>
     </div>
 <div class="container">
     <decorator:body/>

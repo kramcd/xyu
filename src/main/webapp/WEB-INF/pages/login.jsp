@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div  style="margin-left: 290px; font-weight: bold; font-size: 16px">
+<div  style="margin-left: 290px; font-weight: bold; font-size: 22px">
     Если вы знаете ваш логин и пароль, авторизуйтесь, пожалуйста
     <img src="/resources/arrow.png" alt="Русское ТВ логотип"/>
 </div>

@@ -12,6 +12,7 @@
         $(function () {
             var today = new Date();
             $('#bithDay').datepicker();
+            $('#employeementDate').datepicker();
         });
     </script>
     <title>
@@ -73,6 +74,9 @@
 
         <form:input readonly="false" placeholder="День рождения" cssClass="form-control" path="bithDay"
                     id="bithDay"/> </br>
+
+        <form:input readonly="false" placeholder="Дата приема на работу" cssClass="form-control" path="employeementDate"
+                    id="employeementDate"/> </br>
 
         <button class="btn btn-default btn-info btn-lg" value="Сохранить" type="submit"><span
                 class="glyphicon glyphicon-ok"></span>

@@ -79,8 +79,8 @@ public class CareerController {
         Instant instant = dDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
         presenter.getCareer().setdDate(new java.sql.Date(Date.from(instant).getTime()));
         presenter.getCareer().setEmployees(employees_service.FindById(employeeId));
-        service.Save(presenter.getCareer());
-
+        //service.Save(presenter.getCareer());
+        presenter.setCareer(service.Save(presenter.getCareer()));
         return new ModelAndView("redirect:/career/?employees_code=" + employeeId);
     }
 

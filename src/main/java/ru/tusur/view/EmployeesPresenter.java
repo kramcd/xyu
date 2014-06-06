@@ -15,12 +15,22 @@ public class EmployeesPresenter {
 
     private String bithDay;
 
+    private String employeementDate;
+
     public EmployeesPresenter(Employees employees){
         this.employees = employees;
     }
 
     public EmployeesPresenter(){
         employees = new Employees();
+    }
+
+    public String getEmployeementDate() {
+        return employeementDate;
+    }
+
+    public void setEmployeementDate(String employeementDate) {
+        this.employeementDate = employeementDate;
     }
 
     public String getBithDay() {

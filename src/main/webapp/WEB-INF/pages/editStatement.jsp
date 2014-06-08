@@ -5,10 +5,10 @@
 <html>
 <head>
     <title>  <ol class="breadcrumb">
-        <li><a href="/statement/?employees_code=${statementview.statement.employees.id}">Список заявлений</a></li>
+        <li><a href="/statement/?employees_code=${statementview.statement.employees.id}">Заявления</a></li>
         <li><a href="/employees/edit/?code=${statementnview.statement.employees.id}">Cотрудник: ${statementnview.statement.employees.name}
             ${statementnview.statement.employees.famaly} ${statementnview.statement.employees.middleName}</a></li>
-        <li><a href="#">Добавление или изменение данных о заявлениях</a></li>
+        <li><a href="#">Редактирование записи</a></li>
 
 
     </ol></title>

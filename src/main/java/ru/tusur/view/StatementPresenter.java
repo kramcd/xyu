@@ -21,7 +21,7 @@ public class StatementPresenter {
         statement = new Statement();
     }
 
-    public String getDpDate() {
+    public String getDpDate(String s) {
         return dpDate;
     }
 
@@ -29,7 +29,7 @@ public class StatementPresenter {
         this.dpDate = dpDate;
     }
 
-    public String getStartDate() {
+    public String getStartDate(String s) {
         return startDate;
     }
 
@@ -37,7 +37,7 @@ public class StatementPresenter {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public String getEndDate(String s) {
         return endDate;
     }
 

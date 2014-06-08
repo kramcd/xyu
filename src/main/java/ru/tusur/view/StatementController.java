@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.tusur.domain.Statement;
 import ru.tusur.service.EmployeesService;
 import ru.tusur.service.StatementService;
+import ru.tusur.util.DateUtils;
+
 import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -61,6 +63,10 @@ public class StatementController {
         }
         statement.setEmployees(employees_service.FindById(employeesId));
         presenter.setStatement(statement);
+        presenter.getDpDate(DateUtils.stringFromLocalDate(DateUtils.localFromSqlDate(presenter.getStatement().getDpDate())));
+        presenter.getEndDate(DateUtils.stringFromLocalDate(DateUtils.localFromSqlDate(presenter.getStatement().getEndDate())));
+        presenter.getStartDate(DateUtils.stringFromLocalDate(DateUtils.localFromSqlDate(presenter.getStatement().getStartDate())));
+
         return new ModelAndView("editStatement", "statementview", presenter);
     }
 

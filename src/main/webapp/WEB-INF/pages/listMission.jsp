@@ -6,8 +6,10 @@
 <head>
     <title>
         <ol class="breadcrumb">
+
+            <li><a href="/mission/?employees_code=${missionview.id}">Командировки</a></li>
             <li>
-            <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
+                <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
             <a href="/employees/edit/?code=<%=request.getParameter("employees_code")%>">
                 </security:authorize>
                 Сотрудник: ${missionview.famaly} ${missionview.name}
@@ -17,7 +19,7 @@
             </security:authorize>
             </li>
             <li>
-            <a href="/mission/<%=request.getParameter("employees_code")%>">Список коммандировок</a>
+            <a href="#">Список записей</a>
             </li>
 
         </ol>

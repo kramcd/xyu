@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.tusur.domain.Mission;
 import ru.tusur.service.EmployeesService;
 import ru.tusur.service.MissionService;
+import ru.tusur.util.DateUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -54,14 +55,19 @@ public class MissionController {
                                      String code, @PathVariable int employeesId,
                                      @ModelAttribute("missionview") MissionPresenter presenter){
         Mission mission;
+        mission = new Mission();
         if(code == null || code.length() <= 0){
-            mission = new Mission();
+            presenter.setMission(mission);
         }
         else {
             mission = service.FindById(Integer.parseInt(code));
+            mission.setEmployees(employees_service.FindById(employeesId));
+            presenter.setMission(mission);
+            presenter.setDispatchDate(DateUtils.stringFromLocalDate(DateUtils.localFromSqlDate(presenter.getMission().getDispatchDate())));
+            presenter.setReturnDate(DateUtils.stringFromLocalDate(DateUtils.localFromSqlDate(presenter.getMission().getReturnDate())));
         }
-        mission.setEmployees(employees_service.FindById(employeesId));
-        presenter.setMission(mission);
+
+
         return new ModelAndView("editMission", "missionview", presenter);
     }
 

@@ -20,7 +20,7 @@
             <li><a href="/mission/?employees_code=${missionview.mission.employees.id}">Список командировок</a></li>
         <li><a href="/employees/edit/?code=${missionview.mission.employees.id}">Cотрудник: ${missionview.mission.employees.name}
             ${missionview.mission.employees.famaly} ${missionview.mission.employees.middleName}</a></li>
-        <li><a href="#">Добавление или изменение данных о командировках</a></li>
+        <li><a href="#">Редактирование записи</a></li>
 
 
     </ol></title>
@@ -31,8 +31,9 @@
     <form:input cssClass="form-control" placeholder="Место дислокации" path="mission.place"/></br>
     <div class="input-group"><span class="input-group-addon">Руб.</span>
     <form:input cssClass="form-control" placeholder="Сумма командировачных" path="mission.money"/></div></br>
-    <form:input cssClass="form-control" placeholder="Дата отъезда" path="dispatchDate" id="dispatchDate" readonly="true" /></br>
-    <form:input cssClass="form-control" placeholder="Дата возвращения" path="returnDate" id="returnDate" readonly="true"/></br>
+    <form:input cssClass="form-control" placeholder="Дата отъезда" readonly="false" path="dispatchDate" id="dispatchDate"/></br>
+
+    <form:input cssClass="form-control" placeholder="Дата возвращения" path="returnDate" id="returnDate" readonly="false"/></br>
 
     <button class="btn btn-default btn-info btn-lg" value="Сохранить" type="submit"><span
             class="glyphicon glyphicon-ok"></span>

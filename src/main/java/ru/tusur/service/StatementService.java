@@ -18,8 +18,7 @@ public class StatementService {
             "Посмореть статус вы можете в своем личном кабинете<br/>"+
             "Да прибудет с вами сила (: !";
 
-
-    @Autowired
+   @Autowired
     private StatementRepository repository;
 
     @Autowired

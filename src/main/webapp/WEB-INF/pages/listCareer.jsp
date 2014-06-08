@@ -5,17 +5,20 @@
 <head>
     <title>
         <ol class="breadcrumb">
+
+            <li><a href="/career/?employees_code=${careerview.id}">Карьерный рост</a></li>
             <li>
-<security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
+                <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
                 <a href="/employees/edit/?code=${careerview.id}">
                     </security:authorize>
-                Сотрудник: ${careerview.famaly} ${careerview.name}
-                ${careerview.middleName}
-<security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">    </a>  </security:authorize>
+                    Сотрудник: ${careerview.famaly} ${careerview.name}
+                    ${careerview.middleName}
+                    <security:authorize
+                            access="isAuthenticated() and hasRole('ROLE_ADMIN')">    </a> </security:authorize>
             </li>
             <li>
-                <a href="/career/<%=request.getParameter("employees_code")%>">Карьерный рост cписок записей</a>
-                </li>
+                <a href="#">Список записей</a>
+            </li>
 
         </ol>
     </title>
@@ -70,11 +73,11 @@
 
 </table>
 <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
-<a class="text-success" href="/career/<%=request.getParameter("employees_code")%>/edit/">
-    <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>
-        <b>Добавить запись</b>
-    </button>
-</a>
+    <a class="text-success" href="/career/<%=request.getParameter("employees_code")%>/edit/">
+        <button class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>
+            <b>Добавить запись</b>
+        </button>
+    </a>
 </security:authorize>
 </body>
 </html>

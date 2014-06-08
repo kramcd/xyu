@@ -17,11 +17,12 @@
     </script>
     <title>
         <ol class="breadcrumb">
-            <li><a href="/employees/edit/?code=${missionview.mission.employees.id}">
-                Сотрудник: ${careerview.career.employees.name}
-                ${careerview.career.employees.famaly} ${careerview.career.employees.middleName}</a></li>
-            <li><a href="/career/<%=request.getParameter("employees_code")%>/edit/">Карьерный рост редактирование
-                записей</a></li>
+            <li><a href="/career/?employees_code=${careerview.career.employees.id}">Карьерный рост</a></li>
+            <li><a href="/employees/edit/?code=${careerview.career.employees.id}">
+                Сотрудник: ${careerview.career.employees.famaly} ${careerview.career.employees.name}
+                 ${careerview.career.employees.middleName}</a></li>
+            <li><a href="/career/<%=request.getParameter("employees_code")%>/edit/">Редактирование
+                записи</a></li>
 
         </ol>
     </title>
@@ -37,7 +38,7 @@
             </c:forEach>
             <form:options/>
         </form:select></br>
-        <form:input cssClass="form-control" placeholder="Дата" readonly="true" path="dDate" id="dDate"/></br>
+        <form:input cssClass="form-control" placeholder="Дата" readonly="false" path="dDate" id="dDate"/></br>
         <form:textarea cssClass="form-control" placeholder="Комментарий" path="career.coment"/></br>
 
 

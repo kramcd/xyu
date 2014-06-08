@@ -15,7 +15,6 @@ public class Mission {
     @Column(nullable = false)
     private Date dispatchDate;
 
-
     @Column(nullable = false)
     private Date returnDate;
 

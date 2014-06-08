@@ -61,6 +61,9 @@
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:3.2.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:3.2.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:3.2.3.RELEASE" />
+          <element id="library" level="project" name="Maven: com.itextpdf:itextpdf:5.5.0" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.6" />
+          <element id="library" level="project" name="padeg-3.3.0.24-javadoc" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="xyu/web/Web" />

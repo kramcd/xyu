@@ -6,6 +6,7 @@
 <head>
     <title>
         <ol class="breadcrumb">
+            <li><a href="/statement/?employees_code=${statementview.id}">Заявления</a></li>
             <security:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
             <li><a href="/employees/edit/?code=<%=request.getParameter("employees_code")%>">
                 </security:authorize>
@@ -16,7 +17,7 @@
                 </security:authorize>
             </li>
             <li>
-                <a href="/statement/<%=request.getParameter("employees_code")%>">Список заявлений</a>
+                <a href="#">Список записей</a>
                 </li>
 
         </ol>
